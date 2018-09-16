@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class UserDatabase extends SQLiteOpenHelper{
 
+    public static final String Username = "username";
+    public static final String Password = "password";
+
     private static final int DATABASE_VERSION =1;
     private static final String DATABASE_NAME = "contacts.db";
     private static final String COLUMN_ID = "id";
@@ -15,8 +18,7 @@ public class UserDatabase extends SQLiteOpenHelper{
     private static final String COLUMN_USERNAME ="Username";
     private static final String COLUMN_PASS = "Password";
     SQLiteDatabase db;
-    private static final String TABLE_CREATE=" create table contacts (id integer primary key not null, " +
-            "username text not null, Password text not null)";
+    private static final String TABLE_CREATE ="create table " + TABLE_NAME + "( " + Username +"text not null," + Password +"text not null)";
 
     public UserDatabase(Context context) {
         super(context, DATABASE_NAME, null , DATABASE_VERSION);
@@ -45,7 +47,7 @@ public class UserDatabase extends SQLiteOpenHelper{
     db.close();
     }
 
-    public String searchUsername(String namestr){
+    /*public String searchUsername(String namestr){
         db=this.getReadableDatabase();
         String query = "select namestr,pass from" + TABLE_NAME +" Where namestr" + namestr;
         Cursor cursor = db.rawQuery(query, null);
@@ -57,7 +59,7 @@ public class UserDatabase extends SQLiteOpenHelper{
         }
         return b;
     }
-    public String searchPassword(String passstr){
+    /*public String searchPassword(String passstr){
         db=this.getReadableDatabase();
         String query = "select passstr,pass from" + TABLE_NAME +" Where passstr" + passstr;
         Cursor cursor = db.rawQuery(query, null);
@@ -68,7 +70,7 @@ public class UserDatabase extends SQLiteOpenHelper{
 
         }
         return b;
-    }
+    }*/
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

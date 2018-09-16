@@ -1,5 +1,6 @@
 package com.helloworld.ranja.phit;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.icu.text.IDNA;
 import android.support.v7.app.AppCompatActivity;
@@ -42,36 +43,60 @@ public class LoginScreen extends AppCompatActivity {
 
         Info.setText(Integer.toString(counter));
 
-        
-
         Login.setOnClickListener(new View.OnClickListener()
                                  {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
 
-                    if(Username.getText().toString().equals(name)  && Password.getText().toString().equals(pass)) {
-                        //System.out.println("HELLO");
-                        Intent intent = new Intent(LoginScreen.this,InputScreen.class);
-                        startActivity(intent);
-                        //System.out.println(Username);
-                        //System.out.println(Password);
-                    }else{
-                        //System.out.println("NOPE" + Username.getText() + Password.getText());
-                        //System.out.println(Username.getText().equals("Admin"));
-                        //System.out.println(Password.getText().equals("1234"));
-                        Toast pass =Toast.makeText(LoginScreen.this,"Passwords don't match", Toast.LENGTH_SHORT);
-                        pass.show();
-
-                        counter--;
-
-                        Info.setText(Integer.toString(counter));
-
-                        if(counter==0){
-                            Login.setEnabled(false);
-                        }
+                String Username1 =Username.getText().toString().trim();
+                Intent intent = new Intent(LoginScreen.this,InputScreen.class);
+                startActivity(intent);
+                try {
+                    Cursor c = database.db.rawQuery( "SELECT* FROM users where namestr= '" + Username1 +"'", null );
+                    if (c.getCount() > 0) {
+                        Toast.makeText( getApplicationContext(), "USER ALREADY EXITS", Toast.LENGTH_LONG ).show();
                     }
 
-            }
+                    else{
+                            //System.out.println("NOPE" + Username.getText() + Password.getText());
+                            //System.out.println(Username.getText().equals("Admin"));
+                            //System.out.println(Password.getText().equals("1234"));
+                            Toast pass = Toast.makeText( LoginScreen.this, "Passwords don't match", Toast.LENGTH_SHORT );
+                            pass.show();
+
+                            counter--;
+
+                            Info.setText( Integer.toString( counter ) );
+
+                            if (counter == 0) {
+                                Login.setEnabled( false );
+                            }
+                        }
+                    }  catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+                    //if(Username.getText().toString().equals(name)  && Password.getText().toString().equals(pass)) {
+                    //System.out.println("HELLO");
+                    //System.out.println(Username);
+                    //System.out.println(Password);
+                    //}else{
+                    //System.out.println("NOPE" + Username.getText() + Password.getText());
+                    //System.out.println(Username.getText().equals("Admin"));
+                    //System.out.println(Password.getText().equals("1234"));
+                    //Toast pass = Toast.makeText( LoginScreen.this, "Passwords don't match", Toast.LENGTH_SHORT );
+                    //pass.show();
+
+                    //counter--;
+
+                    //Info.setText( Integer.toString( counter ) );
+
+                    //if (counter == 0) {
+                      //Login.setEnabled( false );
+                    }
+
+
+
         }
 
         );
