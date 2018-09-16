@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class SignUpScreen extends AppCompatActivity {
@@ -30,9 +31,20 @@ public class SignUpScreen extends AppCompatActivity {
     {
         @Override
                 public void OnClick(View v) {
-            if(Password.getText().toString().equals(PasswordCon));
-        Intent intent2 = new Intent(SignUpScreen.this,InputScreen.class);
-        startActivity(intent2);
+            if(!Password.getText().toString().equals(PasswordCon))
+
+        {
+            Toast pass =Toast.makeText(SignUpScreen.this,"Passwords don't match", Toast.LENGTH_SHORT);
+            pass.show();
+        }
+        else
+        {
+            Contact c =new Contact();
+            c.setUsername(  );
+            Intent intent2 = new Intent(SignUpScreen.this,InputScreen.class);
+            startActivity(intent2);
+        }
+
     }
 
     }
