@@ -1,30 +1,22 @@
 package com.helloworld.ranja.phit;
 
 public class Contact {
-    int id;
-    string username,password;
 
-    public void setId(int Id)
-    {
-        this.id=id;
-    }
+    private String Username;
+    private String password;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setUsername(string username) {
+    public void setUsername(String username) {
         this.Username=username;
 
     }
-    public string getUsername()
+    public String getUsername()
     {
         return this.Username;
     }
-    public void setPassword(string password){
+    public void setPassword(String password){
         this.password=password;
     }
-    public string getPassword()
+    public String getPassword()
     {
         return this.password;
     }

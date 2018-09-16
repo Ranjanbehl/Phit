@@ -1,5 +1,6 @@
 package com.helloworld.ranja.phit;
 import android.content.Intent;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.icu.text.IDNA;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginScreen extends AppCompatActivity {
 
@@ -16,9 +18,12 @@ public class LoginScreen extends AppCompatActivity {
     private  static Button Login;
     private  static TextView Info;
     private  static Button SignUp;
+    private static EditText name;
+    private static EditText pass;
     int counter = 5;
 
-    //UserDatabase userbase = new UserDatabase();
+    UserDatabase database = new UserDatabase(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +39,17 @@ public class LoginScreen extends AppCompatActivity {
         Login = findViewById(R.id.btnLogin);
         Info = findViewById(R.id.tvInfo);
 
+
         Info.setText(Integer.toString(counter));
+
+        
 
         Login.setOnClickListener(new View.OnClickListener()
                                  {
             @Override
             public void onClick(View v) {
 
-                    if(Username.getText().toString().equals("Admin")  && Password.getText().toString().equals("1234")) {
+                    if(Username.getText().toString().equals(name)  && Password.getText().toString().equals(pass)) {
                         //System.out.println("HELLO");
                         Intent intent = new Intent(LoginScreen.this,InputScreen.class);
                         startActivity(intent);
@@ -51,6 +59,9 @@ public class LoginScreen extends AppCompatActivity {
                         //System.out.println("NOPE" + Username.getText() + Password.getText());
                         //System.out.println(Username.getText().equals("Admin"));
                         //System.out.println(Password.getText().equals("1234"));
+                        Toast pass =Toast.makeText(LoginScreen.this,"Passwords don't match", Toast.LENGTH_SHORT);
+                        pass.show();
+
                         counter--;
 
                         Info.setText(Integer.toString(counter));

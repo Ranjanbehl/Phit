@@ -12,12 +12,12 @@
         android:id="@+id/etPassword1"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="118dp"
+        android:layout_marginTop="152dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btnOk"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSignUpHeader" />
 
@@ -32,15 +32,16 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/etPassword1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.589" />
+        app:layout_constraintVertical_bias="0.824" />
 
     <TextView
         android:id="@+id/etSignUpHeader"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="191dp"
+        android:layout_marginBottom="244dp"
         android:layout_marginEnd="71dp"
         android:layout_marginStart="71dp"
         android:layout_marginTop="8dp"
@@ -52,7 +53,7 @@
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword1"
+        app:layout_constraintBottom_toTopOf="@+id/etpasswordcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +62,7 @@
     <Button
         android:id="@+id/btnOk"
         android:layout_width="80dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="136dp"
         android:text="Ok"
         android:textAlignment="center"
@@ -69,16 +70,22 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/etSignUpHeader"
+        app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintStart_toStartOf="@+id/etSignUpHeader"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword1" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword1"
+        app:layout_constraintVertical_bias="0.981" />
 
     <EditText
         android:id="@+id/etpasswordcon"
         android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="284dp"
         android:ems="10"
         android:hint="confirm password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="335dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSignUpHeader" />
 </android.support.constraint.ConstraintLayout>

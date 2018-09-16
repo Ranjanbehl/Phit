@@ -9,12 +9,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+
 public class SignUpScreen extends AppCompatActivity {
     private  static EditText Username;
     private  static EditText Password;
     private  static EditText PasswordCon;
-    private  static Button Ok;
+    private Button Ok;
 
+    String namestr = Username.getText().toString();
+    String passstr = Password.getText().toString();
+
+    UserDatabase database = new UserDatabase(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,27 +31,31 @@ public class SignUpScreen extends AppCompatActivity {
         Password = findViewById(R.id.etPassword1);
         PasswordCon =findViewById(R.id.etpasswordcon);
         Ok = findViewById(R.id.btnOk);
-    }
         Ok.setOnClickListener(new View.OnClickListener()
-    {
-        @Override
-                public void OnClick(View v) {
-            if(!Password.getText().toString().equals(PasswordCon))
-
         {
-            Toast pass =Toast.makeText(SignUpScreen.this,"Passwords don't match", Toast.LENGTH_SHORT);
-            pass.show();
-        }
-        else
-        {
-            Contact c =new Contact();
-            c.setUsername(  );
-            Intent intent2 = new Intent(SignUpScreen.this,InputScreen.class);
-            startActivity(intent2);
-        }
+            @Override
+            public void onClick(View v) {
+                if(!Password.getText().toString().equals(PasswordCon))
 
-    }
+                {
+                    Toast pass =Toast.makeText(SignUpScreen.this,"Passwords don't match", Toast.LENGTH_SHORT);
+                    pass.show();
+                }
+                else
+                {
+                    Contact c =new Contact();
+                    c.setUsername(namestr);
+                    c.setPassword(passstr);
+                    //Intent intent2 = new Intent(SignUpScreen.this,InputScreen.class);
+                    //startActivity(intent2);
 
-    }
+                    database.insertContact(c);
+                }
+
+            }
+    })
+     ;}
+
+
 
 }
