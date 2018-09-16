@@ -15,13 +15,17 @@ public class LoginScreen extends AppCompatActivity {
     private  static EditText Password;
     private  static Button Login;
     private  static TextView Info;
+    private  static Button SignUp;
     int counter = 5;
+
+    //UserDatabase userbase = new UserDatabase();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
         LoginButton();
+        SignUpButton();
     }
 
         public void LoginButton(){
@@ -32,7 +36,8 @@ public class LoginScreen extends AppCompatActivity {
 
         Info.setText(Integer.toString(counter));
 
-        Login.setOnClickListener(new View.OnClickListener() {
+        Login.setOnClickListener(new View.OnClickListener()
+                                 {
             @Override
             public void onClick(View v) {
 
@@ -40,6 +45,8 @@ public class LoginScreen extends AppCompatActivity {
                         //System.out.println("HELLO");
                         Intent intent = new Intent(LoginScreen.this,InputScreen.class);
                         startActivity(intent);
+                        //System.out.println(Username);
+                        //System.out.println(Password);
                     }else{
                         //System.out.println("NOPE" + Username.getText() + Password.getText());
                         //System.out.println(Username.getText().equals("Admin"));
@@ -54,9 +61,20 @@ public class LoginScreen extends AppCompatActivity {
                     }
 
             }
+        }
+
+        );
+        }
+
+    public void SignUpButton() {
+        SignUp = findViewById(R.id.btnsignup);
+        SignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(LoginScreen.this,SignUpScreen.class);
+                startActivity(intent1);
+            }
         });
     }
-
-
 
 }
